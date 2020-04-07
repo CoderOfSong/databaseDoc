@@ -26,8 +26,8 @@ public class DataUtils {
 
         // oracle连接
         Class.forName("oracle.jdbc.OracleDriver");
-        String url="jdbc:oracle:thin:@10.23.13.9:1521:hrmdb";
-        conn=DriverManager.getConnection(url,"hrm","hrm");
+        String url="url";
+        conn=DriverManager.getConnection(url,"user","password");
 
         // mysql连接
         //Class.forName("org.gjt.mm.mysql.Driver");
@@ -42,7 +42,7 @@ public class DataUtils {
         ResultSet rs1 = null;
         try {
             List<Tables> tablesList = new ArrayList<>();
-            String sqlStr = "SELECT ALLT.TABLE_NAME,UTC.COMMENTS FROM ALL_TABLES ALLT,USER_TAB_COMMENTS UTC WHERE ALLT.TABLE_NAME = UTC.TABLE_NAME AND OWNER='HRM'";
+            String sqlStr = "SELECT ALLT.TABLE_NAME,UTC.COMMENTS FROM ALL_TABLES ALLT,USER_TAB_COMMENTS UTC WHERE ALLT.TABLE_NAME = UTC.TABLE_NAME AND OWNER='数据库用户必须大写'";
             pst = conn.prepareStatement(sqlStr);
             rs = pst.executeQuery();
             while(rs.next()){
